@@ -1,0 +1,8 @@
+__pycache__
+venv
+runs
+.vscode
+trained/
+trained_new/
+*.tar.gz
+*.tar

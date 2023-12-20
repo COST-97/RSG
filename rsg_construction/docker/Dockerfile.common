@@ -1,0 +1,62 @@
+FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
+
+
+
+ENV TZ=Asia/Shanghai
+ENV DEBIAN_FRONTEND=noninteractive
+ENV HOME=/root
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    ca-certificates \
+    sudo \
+    git \
+    unzip \
+    bzip2 \
+    libx11-6 \
+    cmake \
+    patchelf
+
+RUN apt-get install ca-certificates apt-transport-https software-properties-common lsb-release -y
+RUN add-apt-repository ppa:deadsnakes/ppa
+
+RUN apt-get install -y libosmesa6-dev \
+    curl \
+    tzdata \
+    git \
+    libgl1-mesa-dev \
+    libgl1-mesa-glx \
+    libglew-dev \
+    libosmesa6-dev \
+    software-properties-common \
+    net-tools \
+    vim \
+    virtualenv \
+    wget \
+    xpra \
+    python3.8 \
+    python3-pip \
+    python3.8-dev \
+    python3.8-venv \ 
+    xserver-xorg-dev \
+    keyboard-configuration
+
+
+RUN mkdir /dep
+WORKDIR /dep
+RUN chmod 777 /dep
+
+
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/.mujoco/mujoco210/bin
+
+RUN python3.8 -m venv /venv
+ENV PATH=/venv/bin:$PATH
+ 
+RUN pip install wheel Cython
+RUN apt-get install -y libblas-dev liblapack-dev libatlas-base-dev gfortran
+RUN pip install torch==1.13.1 torchvision==0.14.1 
+
+
+
+
+CMD ["bash"]
