@@ -1,4 +1,4 @@
-# RSG: Fast Learning Adaptive Skills for Quadruped Robots by Skill Graph
+# Unlock Reliable Skill Inference for Quadruped Adaptive Behavior by Skill Graph
 
 The code repository contains relevant configuration requirements, fundamental skills training, RSG construction, inference and composition code. This repository is based off of Nikita Rudin's [legged_gym](https://github.com/leggedrobotics/legged_gym) and [AMP](https://bit.ly/3hpvbD6) repo, and enables us to train policies using [Isaac Gym](https://developer.nvidia.com/isaac-gym).
 
